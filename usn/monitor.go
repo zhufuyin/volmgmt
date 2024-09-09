@@ -139,10 +139,11 @@ func (m *Monitor) run(interval time.Duration, cursor *Cursor, sigstop, stopped c
 	defer close(stopped)
 	defer cursor.Close()
 
-	var (
-		buffer [65536]byte
-		p      = buffer[:]
-	)
+	// var (
+	// 	buffer [65536]byte
+	// 	p      = buffer[:]
+	// )
+	p := make([]byte, 262144)
 
 	for {
 		select {
